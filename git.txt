@@ -1,0 +1,103 @@
+vcs ==> vesion control system
+-----------------------------
+records changes of a file over a period of time and retrives specific versions of it whenever we want.
+
+ * local version control system => rcs
+
+ * centralized verison control system => everything is stored in a single server 
+ 
+ * distributed version control system => git  
+_____________________________________________________________________________________________________________________________ 
+
+git
+----
+* it stores snapshots not file based changes
+* almost every operation is local - so no internet is required
+* git has intergrity -- every file is checksummed before stored in repository and referred by its check sum    
+* git stores everything by not by filename , but using checksum of files contents
+
+_____________________________________________________________________________________________________________________________
+
+states
+------
+
+ 1. tracked  -->  commited 
+             -->  staged
+             -->  modified
+
+ 2. untracked --> files which are not in staging are called untracked
+_____________________________________________________________________________________________________________________________
+
+areas
+-----
+ 1. stash
+ 2. working directory
+ 3. staging area - index
+ 4. git repository
+_____________________________________________________________________________________________________________________________
+
+configuration - git config
+--------------------------
+--local   --> .git/config 
+--global  -->  ~/.gitconfig  or  ~/.config/git/config
+--system  -->  etc/gitconfig
+
+identity - git commit uses this information
+-------------------------------------------
+git config --local user.name "navee"
+git config --local user.email "naveen@gmail.com"
+
+editor
+------
+git config -system core.editor "vi"
+
+viewing all settings
+--------------------
+git config --system --list
+
+checking specfic settings
+-------------------------
+git config --local user.name 
+git config --global core.editor
+
+location of settings
+--------------------
+git config --show-origin key 
+git config --show-origin user.name
+git config --show-origin user.email 
+
+getting help
+-------------
+git help <verb>   
+man git-<verb> 
+git <verb> -h or git <verb> --help
+_____________________________________________________________________________________________________________________________
+
+
+
+
+
+
+
+
+
+
+
+
+
+_____________________________________________________________________________________________________________________________
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
