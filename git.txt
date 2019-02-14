@@ -1,3 +1,6 @@
+_____________________________________________________________________________________________________________________________
+Getting started
+-----------------------------------------------------------------------------------------------------------------------------
 vcs ==> vesion control system
 -----------------------------
 records changes of a file over a period of time and retrives specific versions of it whenever we want.
@@ -24,6 +27,7 @@ states
  1. tracked  -->  commited 
              -->  staged
              -->  modified
+             -->  unmodified
 
  2. untracked --> files which are not in staging are called untracked
 _____________________________________________________________________________________________________________________________
@@ -72,6 +76,187 @@ git help <verb>
 man git-<verb> 
 git <verb> -h or git <verb> --help
 _____________________________________________________________________________________________________________________________
+Git Basics
+-----------------------------------------------------------------------------------------------------------------------------
+repository
+----------
+1. creating new one  -- git init 
+2. cloning a existing repository -- git clone <url> <optional directory name>  
+    http:// git:// ssh --> protocols that git supports
+
+* when cloning an existing repository --> working copy of the latest version will be checked-out
+
+
+adding files to staging area
+----------------------------
+git add  , git add * --> add all files 
+
+committing changes
+------------------
+git commit -m "commit message"
+git commit -a -m "commit message" --> skip the staging area and add already tracked files
+
+tracking new files
+------------------
+git add file/folderName
+
+git status
+----------
+staging-area   working-directory
+--------------------------------
+M - modified
+A - added
+D - deleted
+R - renamed
+C - copied
+
+git ignore - setting up git ignore before doing project is a good idea
+----------
+.gitingnore --> file name 
+# ==> comment
+? ==> single character
+* ==> matches a zero or multiple characters
+! ==> negate a pattern
+/ ==> end   -> directory
+      start -> recursivity
+[abc] ==> matches any of the characters 
+[0-9] ==> mathces characters between 0-9
+
+comparing staged and unstaged
+-----------------------------
+git diff ==> shows exact lines removed and added
+git diff --> compares working directory with staging area
+git diff --staged --> compares staging area with last commit
+git diff --cahced
+
+removing files
+--------------
+to remove a file from git , we have to remove it from staging area. 
+
+1.rm file and update the deletion process to git staging area
+  rm file.txt
+  git add file.txt
+  ** git will automatically detect the file is deleted **
+
+2.git rm will remove the file from hard disk and automatically update to the staging area about the deletion process
+  git rm file.txt
+  ** if the file is not in the database , we have to use -f option to force the deletion process    
+
+3.only remove the file from staging area 
+  git rm --cahced file.txt
+
+moving files
+------------
+1. renaming: git mv file_from file_to 
+2. mv file_from file_to
+   git rm file_from 
+   git add file_to 
+
+viewing commit history - git log
+--------------------------------
+git log --> without any argument it shows commits in reverser order
+
+-p --patch 
+-2 --> number of logs
+--stat --> show statistics for each commit log 
+--pretty --> formatting git log output 
+    git log --pretty=oneline
+    git log --pretty=short
+    git log --pretty=full
+    git log --pretty=fuller
+--graph --> shows as graphs in ascii characters
+
+git log --pretty=format:""
+
+limiting and filtering commit history
+-------------------------------------
+git log -<n> --> shows latest n commits
+--since --until --before --after --> time based filtering
+
+undoing things
+--------------
+undoing last commit
+-------------------
+if we forget to add some files or messed up with commit message we can redo the last commit.
+we can only modify last commit
+
+git commit --amend -m "new message"
+
+unstaging a staged file
+-----------------------
+git reset HEAD filename --> it brings the file from object datebase to staging area
+
+unmodifing the modified file
+----------------------------
+git checkout --filename --> it brings the file from object database to staging area and staging are to working directory
+
+working with remotes
+--------------------
+git remote --> lists the remote repositories 
+git remote -v --> shows urls also 
+ORIGIN ---> the default name git gives for the server
+
+git remote add <shortname> <url>
+git remote remove <shortname> , git remote rm <shortname>
+git remote rename <old_name> <new_name>
+git push <remote> <branch>
+git fetch <remote>
+git pull <remote>
+git remote show <remote> ==> inspecting specfic remote 
+
+tages - marking a particular point 
+----------------------------------
+1. lightweight tags --> pointer to a specfic commit --> not stored in git database
+2. annotated tags --> stored as objects in git database
+
+creating annotated tags 
+-----------------------
+git tag -a <tag_name> -m "<message>"
+git show <tag_name>  --> shows the particular tag information with commit information
+
+taging specfic commits
+----------------------
+git tag -a <tag_name> commit_hash
+
+creating lightweight tags
+-------------------------
+git tag <tag_name>
+git tag --> lists tags
+
+git alias
+---------
+git config --system alias.co 'checkout' --> git co --> git checkout
+git config --system alias.ci 'commit'  --> git ci --> git commit 
+git config --system alias.unstage 'reset HEAD'  --> git unstage fileName 
+git config --system alias.last 'log -1 '
+_____________________________________________________________________________________________________________________________
+_____________________________________________________________________________________________________________________________
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
